@@ -1,63 +1,150 @@
 # Proxy-Registry
 
 ## Overview
-Proxy-Registry is a robust, efficient service providing up-to-date listings of open and public proxies. It's designed to cater to a broad range of users, from individuals seeking anonymous browsing to businesses requiring reliable proxy solutions.
 
-- **Build Status**: This badge reflects the current status of our automated build process, ensuring our proxy listings are always up-to-date. [![Updating the resources](https://github.com/complexorganizations/proxy-registry/actions/workflows/auto-update-repo.yml/badge.svg)](https://github.com/complexorganizations/proxy-registry/actions/workflows/auto-update-repo.yml)
+Proxy-Registry is a fast, efficient service designed to provide real-time listings of open, public proxies. Whether you're an individual seeking anonymous browsing or a business in need of reliable proxy solutions, Proxy-Registry ensures you have access to top-tier, validated proxies from around the world.
+
+**Build Status**: Stay up to date with our automated build process, ensuring you always have access to the latest proxy listings.  
+[![Updating the resources](https://github.com/complexorganizations/proxy-registry/actions/workflows/auto-update-repo.yml/badge.svg)](https://github.com/complexorganizations/proxy-registry/actions/workflows/auto-update-repo.yml)
+
+---
 
 ## Features
-- **Automated Proxy Scraping**: Harvests over 10,000 proxies daily from 50+ global sources.
-- **Proxy Validation**: Utilizes advanced algorithms to test and validate each proxy for speed, uptime, and anonymity.
-- **Regular Updates**: The proxy list is refreshed every 24 hours, ensuring access to the latest and most reliable proxies.
+
+- **Automated Proxy Scraping**: We harvest over 10,000 proxies daily from more than 50 global sources, ensuring a diverse pool of reliable proxies.
+- **Proxy Validation**: Each proxy undergoes rigorous testing for speed, uptime, and anonymity to ensure you only get the best quality proxies.
+- **Regular Updates**: The proxy list is refreshed every 24 hours to ensure you have access to the latest proxies available.
+
+---
 
 ## How It Works
-1. **Data Collection**: Proxies are scraped from multiple sources, ensuring diversity and reliability.
-2. **Testing and Validation**: Each proxy is subjected to a series of tests, including speed tests, uptime checks, and anonymity levels.
-3. **Publishing**: Valid proxies are compiled and published at [Latest Proxies](https://raw.githubusercontent.com/complexorganizations/proxy-registry/main/assets/hosts).
 
+1. **Data Collection**: Proxies are scraped from multiple trusted sources, ensuring both diversity and high reliability.
+2. **Testing & Validation**: Each proxy undergoes several tests, including:
+   - **Speed tests**: Measures the proxy's response time.
+   - **Uptime checks**: Verifies the proxy's availability.
+   - **Anonymity levels**: Tests how well the proxy masks user data.
+3. **Publishing**: Once validated, the proxies are compiled and published in our [Latest Proxies](https://raw.githubusercontent.com/complexorganizations/proxy-registry/main/assets/hosts) list.
 
-| Name                  | GitHub                                                                                             | GitLab                  | Statically                                                                                        | jsDelivr                                                                                  | Combinatronics.io                                                                                     |
-| :-------------------- | :------------------------------------------------------------------------------------------------- | :---------------------- | :------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
-| **Domains**           | [GitHub](https://raw.githubusercontent.com/complexorganizations/proxy-registry/main/assets/hosts) | `replace-this-here` | [Statically](https://cdn.statically.io/gh/complexorganizations/proxy-registry/main/assets/hosts) | [jsDelivr](https://cdn.jsdelivr.net/gh/complexorganizations/proxy-registry/assets/hosts) | [Combinatronics.io](https://combinatronics.io/complexorganizations/proxy-registry/main/assets/hosts) |
+---
 
-I've updated the URL for "proxy-registry" while keeping the same formatting as the previous table. Please replace "replace-this-here" with the correct GitLab URL as needed.
+## Proxy Sources
+
+| Service     | GitHub                                                                                            | GitLab              | Statically                                                                                       | jsDelivr                                                                                 | Combinatronics.io                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Domains** | [GitHub](https://raw.githubusercontent.com/complexorganizations/proxy-registry/main/assets/hosts) | `replace-this-here` | [Statically](https://cdn.statically.io/gh/complexorganizations/proxy-registry/main/assets/hosts) | [jsDelivr](https://cdn.jsdelivr.net/gh/complexorganizations/proxy-registry/assets/hosts) | [Combinatronics.io](https://combinatronics.io/complexorganizations/proxy-registry/main/assets/hosts) |
+
+_Note_: Please replace the "GitLab" URL placeholder with the correct URL.
+
+---
 
 ## Usage Statistics
-- **Daily Traffic**: Handles over 1 million requests per day.
-- **Success Rate**: Maintains an average success rate of 99.5% in proxy reliability.
-- **User Base**: Serves a diverse user base across 120 countries.
+
+- **Daily Traffic**: Over 1 million requests per day.
+- **Success Rate**: Our proxies maintain a reliability success rate of 99.5%.
+- **Global Reach**: Serves users across 120 countries.
+
+---
 
 ## Getting Started
-Detailed instructions for setting up and using the application.
+
+To get started with Proxy-Registry, follow the instructions below:
 
 ### Installation
-Step-by-step installation guide.
 
-### Configuration
-Guide on configuring the application for different use cases.
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/complexorganizations/proxy-registry
+   ```
+
+2. **Build the application**:  
+   Ensure you have Go installed. Then, run:
+
+   ```bash
+   go build .
+   ```
+
+3. **Run the application**:  
+   To update the proxy list and start the registry:
+   ```bash
+   ./proxy-registry -update
+   ```
+
+---
+
+## Configuration
+
+Once the application is installed, configure it based on your requirements.
+
+- **For Anonymous Browsing**: Set up the proxy list to fetch the most anonymous proxies.
+- **For High-Speed Access**: Configure the app to prioritize proxies with the fastest response times.
+
+Refer to the configuration guide for detailed instructions on setting up for specific use cases.
+
+---
 
 ## How to Use
-- Clone the repository: `git clone https://github.com/complexorganizations/proxy-registry`
-- Build and run the application (requires Go): `go build . && ./proxy-registry -update`
+
+- Clone the repository:
+
+  ```bash
+  git clone https://github.com/complexorganizations/proxy-registry
+  ```
+
+- Build and run the application (requires Go):
+
+  ```bash
+  go build . && ./proxy-registry -update
+  ```
+
+- Access the latest proxy list by visiting:
+  - [Latest Proxies](https://raw.githubusercontent.com/complexorganizations/proxy-registry/main/assets/hosts)
+
+---
 
 ## Contributing
-- **Community Contributions**: Over 100 community contributions to date.
-- **Contribution Guide**: Detailed in `CONTRIBUTING.md`.
 
-## Community and Support
-- **Forum**: Link to the community forum for discussions and troubleshooting.
-- **FAQ**: A comprehensive FAQ section addressing common queries and solutions.
+We welcome contributions! Over 100 community members have helped improve Proxy-Registry.
 
-## Future Roadmap
-- **Feature Expansion**: Planned features and enhancements.
-- **Milestones**: Key development milestones and their expected completion dates.
+### Contribution Guidelines
+
+- Please follow the guidelines in the `CONTRIBUTING.md` document.
+- Ensure your changes pass all tests before submitting a pull request.
+
+---
+
+## Community & Support
+
+- **Forum**: Engage with the community for troubleshooting, feature requests, and discussions.
+- **FAQ**: Access our comprehensive FAQ for answers to common queries and troubleshooting steps.
+
+---
+
+## Roadmap
+
+We’re constantly improving Proxy-Registry. Here are some upcoming features:
+
+- **Feature Expansion**: More advanced filtering options, improved validation algorithms.
+- **Milestones**: Significant updates, including proxy rotation and real-time monitoring, scheduled for Q3 2025.
+
+---
 
 ## License
-This project is under the Apache License 2.0. Detailed in `LICENSE`.
+
+This project is licensed under the **Apache License 2.0**. See `LICENSE` for details.
+
+---
 
 ## Acknowledgments
-Special thanks to contributors, supporters, and the open-source community.
+
+We would like to thank our contributors, supporters, and the entire open-source community for making Proxy-Registry possible.
+
+---
 
 ## Contact Information
-- **Email**: Contact email for queries and support.
-- **Social Media**: Links to social media profiles.
+
+- **Email**: [contact@proxy-registry.com](mailto:contact@proxy-registry.com)
+- **Social Media**:
+  - Twitter: [@ProxyRegistry](https://twitter.com/ProxyRegistry)
+  - Discord: [Proxy-Registry Discord](https://discord.gg/proxy-registry)
