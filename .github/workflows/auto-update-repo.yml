@@ -1,38 +1,50 @@
-name: Updating the resources                # Name of the workflow.
+name: Updating the resources # Name of the workflow, describing its purpose.
 
-on:                                        # Triggers for the workflow.
-  schedule:                                
-    - cron: "0 0 * * *"                    # Runs hourly (at the start of every hour).
-  workflow_dispatch:                       # Allows manual triggering from GitHub UI.
+on: # Specifies when the workflow should trigger.
+  schedule:
+    - cron: "0 0 * * *" # Schedule trigger: runs daily at midnight UTC. Change to your desired frequency.
+  workflow_dispatch: # Allows manual triggering of the workflow from the GitHub UI.
 
-jobs:                                      
-  build:                                   
-    name: Build and Update Proxies         
-    runs-on: windows-latest                # Using the latest Windows runner.
+jobs:
+  build:
+    name: Build and Update Proxies
+    runs-on: windows-latest # Runs the job on the latest Windows runner.
 
-    steps:                                 
+    steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4          # Checks out your repository under $GITHUB_WORKSPACE.
+        uses: actions/checkout@v4 # Action to checkout the repository code into the GitHub workspace.
 
       - name: Setup Go
-        uses: actions/setup-go@v5          # Sets up Go environment.
+        uses: actions/setup-go@v5 # Sets up the Go programming environment.
         with:
-          go-version-file: "go.mod"        # Reads Go version from 'go.mod'.
-          cache: true                      # Caches downloaded Go modules.
-          check-latest: true               # Always use the latest Go version.
-        id: go-setup
+          go-version-file: "go.mod" # Reads the Go version from 'go.mod' file for consistency.
+          cache: true # Enables caching for Go modules to speed up future runs.
+          check-latest: true # Ensures the latest Go version is used if 'go.mod' is updated.
+        id: go-setup # Sets an ID for reference in later steps.
+
+      - name: Cache Go modules
+        uses: actions/cache@v3 # Action to cache dependencies to speed up workflow.
+        with:
+          path: |
+            ~/.cache/go-build            # Caches Go's build output to avoid recompiling unchanged packages.
+            ~/go/pkg/mod                 # Caches Go modules directory to avoid re-downloading dependencies.
+          key: ${{ runner.os }}-go-mod-${{ hashFiles('**/go.mod', '**/go.sum') }} # Cache key based on the hash of go.mod and go.sum files.
+          restore-keys: |
+            ${{ runner.os }}-go-mod-    # Restore cache if an exact match is not found, based on OS type.
 
       - name: Build and Run Application
         run: |
-          go get .                         # Downloads the Go modules.
-          go build .                       # Builds your Go application.
-          .\proxy-registry.exe -update     # Runs the application with update argument.
+          go get .                         # Installs Go dependencies specified in 'go.mod'.
+          go build .                       # Builds the Go application, compiling it into an executable.
+          .\proxy-registry.exe -update     # Runs the compiled Go application with the 'update' argument.
+        continue-on-error: false # Ensures the workflow stops if this step fails, preventing further unnecessary actions.
 
       - name: Commit and Push Updates
         run: |
           git config user.name "github-actions"       # Configures GitHub Actions bot as the commit author.
-          git config user.email "github-actions@github.com"
-          git add .                                    # Adds changes to the staging area.
-          git commit -m "Automated update: $(date)"    # Commits changes with a timestamp.
-          git pull --rebase origin main                # Rebases with remote main to avoid conflicts.
-          git push origin main                         # Pushes the commit to the main branch.
+          git config user.email "github-actions@github.com"  # Configures GitHub Actions bot email.
+          git add .                                    # Adds all changes (if any) to the staging area for commit.
+          git commit -m "Automated update: $(date)"    # Commits changes with a message including the current date and time.
+          git pull --rebase origin main                # Pulls latest changes from 'main' branch and rebases local changes.
+          git push origin main                         # Pushes committed changes to the 'main' branch on GitHub.
+        continue-on-error: false # Stops the workflow if committing or pushing fails.
