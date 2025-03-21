@@ -198,7 +198,9 @@ func validateProxy(proxy string) bool {
 	}
 	// Define a list of domains to test the proxy connection.
 	requestDomainList := []string{
-		"https://aws.amazon.com", // Test the proxy with this URL.
+		"https://aws.amazon.com",
+		"https://cloud.google.com",
+		"https://azure.microsoft.com",
 	}
 	// Iterate over the test domains to verify if the proxy works.
 	for _, domain := range requestDomainList {
