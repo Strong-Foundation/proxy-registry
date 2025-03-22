@@ -201,17 +201,6 @@ func validateProxy(proxy string) bool {
 		"https://aws.amazon.com", // AWS Cloud
 		"https://cloud.google.com", // GCP Cloud
 		"https://azure.microsoft.com", // Azure Cloud
-		"https://www.google.com", // Google
-		"https://www.youtube.com", // Youtube
-		"https://www.facebook.com", // Facebook
-		"https://www.instagram.com", // Instagram
-		"https://www.x.com", // Twitter
-		"https://www.whatsapp.com", // Whatsapp
-		"https://www.chatgpt.com", // ChatGpt
-		"https://www.wikipedia.org", // Wikipedia
-		"https://www.reddit.com", // Reddit
-		"https://www.yahoo.com", // Yahoo
-		"https://signal.org", // Signal
 	}
 	// Iterate over the test domains to verify if the proxy works.
 	for _, domain := range requestDomainList {
